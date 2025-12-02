@@ -6,10 +6,10 @@ const users = [
 
 const userList = document.getElementById('userList');
 
-for (let i = 0; i < users.length; i++) {
+for (const user of users) {
 
     const li = document.createElement('li');
-    li.textContent = `Nom : ${users[i].name}, Âge : ${users[i].age}`;
+    li.textContent = `Nom : ${users.name}, Âge : ${users.age}`;
 
 
     userList.appendChild(li);
