@@ -1,5 +1,3 @@
-// Exercice 9
-
 let produits = [
     { nom: "Stylo", prix: 1.5 },
     { nom: "Cahier", prix: 3 },
@@ -7,49 +5,34 @@ let produits = [
 ];
 
 
-// const table = document.createElement("table");
-// const header = document.createElement("tr");
-// const thNom = document.createElement("th");
-// const thPrix = document.createElement("th");
+const table = document.createElement("table");
+const header = document.createElement("tr");
+const thNom = document.createElement("th");
+const thPrix = document.createElement("th");
 
-// thNom.textContent = "Nom";
-// thPrix.textContent = "Prix";
+thNom.textContent = "Nom";
+thPrix.textContent = "Prix";
 
-// header.appendChild(thNom);
-// header.appendChild(thPrix);
-// table.appendChild(header);
-
-
-// produits.forEach(produit => {
-//     const tr = document.createElement("tr");
-
-//     const tdNom = document.createElement("td");
-//     tdNom.textContent = produit.nom;
-//     tr.appendChild(tdNom);
-
-//     const tdPrix = document.createElement("td");
-//     tdPrix.textContent = produit.prix;
-//     tr.appendChild(tdPrix);
-
-//     table.appendChild(tr);
-// });
+header.appendChild(thNom);
+header.appendChild(thPrix);
+table.appendChild(header);
 
 
-// document.body.appendChild(table);
+produits.forEach(produit => {
+    const tr = document.createElement("tr");
 
-// Exercice 10
+    const tdNom = document.createElement("td");
+    tdNom.textContent = produit.nom;
+    tr.appendChild(tdNom);
 
-let produitsFiltres = filtrerProduitsSuperieursA1(produits);
-console.log(produitsFiltres);
+    const tdPrix = document.createElement("td");
+    tdPrix.textContent = produit.prix;
+    tr.appendChild(tdPrix);
 
-function filtrerProduitsSuperieursA1(produits) {
-    const resultat = [];
+    table.appendChild(tr);
+});
 
-    produits.forEach(produit => {
-        if (produit.prix > 1) {
-            resultat.push(produit);
-        }
-    });
 
-    return resultat;
-}
+document.body.appendChild(table);
+
+
