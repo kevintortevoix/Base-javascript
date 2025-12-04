@@ -1,11 +1,15 @@
 let personnes = ["alice", "bob", "claire"];
+const ul = document.getElementById("listeNoms");
 
 function afficherNomsMajuscules() {
-    const liste = document.getElementById("liste-personnes");
+    for (let i = 0; i < personnes.length; i++) {
+        let nom = personnes[i];
+        let nomMaj = nom.toUpperCase(); 
 
-    for (let nom of personnes) {
         const li = document.createElement("li");
-        li.textContent = nom.toUpperCase(); 
-        liste.appendChild(li);
+        li.textContent = nomMaj
+        ul.appendChild(li);
     }
 }
+
+console.log(afficherNomsMajuscules())
