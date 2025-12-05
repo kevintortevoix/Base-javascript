@@ -4,33 +4,37 @@ let livres = [
     { titre: "Livre C", categorie: "Roman" }
 ];
 
+const div = document.getElementById("groupe");
 
-const categories = {};
-livres.forEach(livre => {
-    if (!categories[livre.categorie]) {
-        categories[livre.categorie] = [];
+let theme = [];
+
+function structureLivres() {
+
+    for (let i = 0; i < livres.length; i++) {
+        if (!theme.includes(livres[i].categorie)) {
+            theme.push(livres[i].categorie);
+        }
     }
-    categories[livre.categorie].push(livre.titre);
-});
+
+    for (let j = 0; j < theme.length; j++) {
+
+        const h3 = document.createElement("h3")
+        const ul = document.createElement("ul")
 
 
-const container = document.createElement("div");
+        h3.textContent = theme[j];
+        div.appendChild(h3);
+        div.appendChild(ul);
 
-for (let categorie in categories) {
-    const h2 = document.createElement("h2");
-    h2.textContent = categorie;
-    container.appendChild(h2);
-
-    const ul = document.createElement("ul");
-
-    categories[categorie].forEach(titre => {
-        const li = document.createElement("li");
-        li.textContent = titre;
-        ul.appendChild(li);
-    });
-
-    container.appendChild(ul);
+        for (let i = 0; i < livres.length; i++) {
+            if (livres[i].categorie === theme[j]) {
+                const li = document.createElement("li");
+                li.textContent = livres[i].titre;
+                ul.appendChild(li);
+            }
+        }
+    }
+    return theme;
 }
-
-document.body.appendChild(container);
+console.log(structureLivres())
 
