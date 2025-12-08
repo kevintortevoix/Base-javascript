@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> TP : Validation du formulaire </title>
+
 </head>
+
 <body>
-    
+
+    <div class="form">
+        <form>
+
+            <label class="form__label" for="prenom"> Nom : </label>
+            <div class="form__input-group">
+                <input type="text" id="nom" name="nom">
+            </div>
+
+            <label class="form__label" for="prenom"> Prénom : </label>
+            <div class="form__input-group">
+                <input type="text" id="prenom" name="prenom">
+            </div>
+
+            <label class="form__label" for="email"> Email : </label>
+            <div class="form__input-group">
+                <input type="email" id="email" />
+            </div>
+
+            <label class="form__label" for="pass">Mot de passe :</label>
+            <div>
+                <input type="password" id="pass" name="password" minlength="8" required />
+            </div>
+
+            <label class="form__label" for="number"> Age :</label>
+            <div>
+                <input type="number" id="age" name="age" min="18" max="99" />
+            </div>
+
+            <input type="submit" id="submit" value="S'inscrire"> <a href="#"> </a>
+        </form>
+
 </body>
+
 </html>
