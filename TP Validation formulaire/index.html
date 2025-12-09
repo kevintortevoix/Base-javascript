@@ -4,43 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title> TP : Validation du formulaire </title>
 
 </head>
 
 <body>
 
-    <div class="form">
+
+
+    <section class="form">
+        <div class="form__title">
+            <h1> Formulaire d'inscription </h1>
+        </div>
+
         <form>
 
             <label class="form__label" for="prenom"> Nom : </label>
             <div class="form__input-group">
                 <input type="text" id="nom" name="nom">
+                <span id="erreur-nom" style="color:red;">Le nom doit comporter au moins 3 caractères.</span>
             </div>
 
             <label class="form__label" for="prenom"> Prénom : </label>
             <div class="form__input-group">
                 <input type="text" id="prenom" name="prenom">
+                <span id="erreur-prenom" style="color:red;">Le prénom doit comporter au moins 2 caractères.</span>
             </div>
 
             <label class="form__label" for="email"> Email : </label>
             <div class="form__input-group">
-                <input type="email" id="email" />
+                <input type="email" id="email">
+                <span id="erreur-email" style="color:red;">Veuillez entrer une adresse mail valide.</span>
             </div>
 
-            <label class="form__label" for="pass">Mot de passe :</label>
-            <div>
-                <input type="password" id="pass" name="password" minlength="8" required />
+            <label class="form__label" for="pass"> Mot de passe :</label>
+            <div class="form__input-group">
+                <input type="password" id="password" name="password"  />
+                <span id="erreur-password" style="color:red;">Le mot de passe doit contenir au moins 8 caractères, une
+                    majuscule, une minuscule et un chiffre.</span>
             </div>
 
             <label class="form__label" for="number"> Age :</label>
-            <div>
-                <input type="number" id="age" name="age" min="18" max="99" />
+            <div class="form__input-group">
+                <input type="number" id="age" name="age">
+                <span id="erreur-age" style="color:red;"> L'âge doit être un nombre entre 18 et 99.</span>
+
             </div>
 
-            <input type="submit" id="submit" value="S'inscrire"> <a href="#"> </a>
-        </form>
+            <div class="form__input-group">
+                <input type="submit" value="S'inscrire" />
+            </div>
 
+        </form>
+    </section>
 </body>
 
 </html>
