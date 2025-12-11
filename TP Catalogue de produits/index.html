@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue de Produits</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Notre Catalogue</h1>
+        
+        <div class="controls">
+            <input type="text" id="search-input" placeholder="Rechercher un produit...">
+            
+            <div id="filter-buttons">
+                <button class="filter-btn active" data-categorie="Tous">Tous</button>
+                <button class="filter-btn" data-categorie="Électronique">Électronique</button>
+                <button class="filter-btn" data-categorie="Livres">Livres</button>
+                <button class="filter-btn" data-categorie="Vêtements">Vêtements</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="products-container" class="products-grid"></div>
+        <p id="no-results" style="display: none; text-align: center;">Aucun produit ne correspond à votre recherche.</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
