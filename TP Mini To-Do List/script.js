@@ -46,11 +46,11 @@ function render() {
             render()
         })
 
+        // Vider toute la liste
         clearBtn.addEventListener("click", () =>{
             tasks = []
             localStorage.removeItem('tasks')
             render()
-
         })
 
         // Sauvegarder la liste
