@@ -7,7 +7,7 @@ const produits = [
 
 const containerProduits = document.getElementById("produits-container")
 
-// Fonction pour afficher les élements dans le DOM.
+// A. Affichage des produits (DOM)
 
 function afficherProduits(produits) {
 
@@ -51,3 +51,8 @@ function afficherProduits(produits) {
     }
 
     afficherProduits(produits);
+
+
+    // B. Gestion du Panier
+
+    
