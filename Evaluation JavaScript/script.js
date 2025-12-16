@@ -76,7 +76,7 @@ const ajouterAuPanier = (produits) => {
     // Vérifie si le produit existe déjà
     const existe = panier.find(p => p.id === produits.id);
 
-    if(existe) {
+    if (existe) {
         // Si oui, augmente la quantité
         existe.quantite += 1;
     }
@@ -94,6 +94,12 @@ const ajouterAuPanier = (produits) => {
     afficherPanier();
 }
 
+// Supprimer un produit par son id
+const supprimerDuPanier = (idProduit) => {
+    panier = panier.filter(p => p.id !== idProduit);
+    afficherPanier();
+}
+
 const listePanier = document.getElementById("panier-liste");
 const montantTotal = document.getElementById("montant-total");
 
@@ -101,28 +107,48 @@ const montantTotal = document.getElementById("montant-total");
 const afficherPanier = () => {
     listePanier.innerHTML = "";
 
+    // si le panier est vide
     if (panier.length === 0) {
-        listePanier.innerHTML = "Votr panier est vide."
+        listePanier.innerHTML = "Votre panier est vide."
         montantTotal.textContent = " 0.00 € ";
-        return
+        return;
     }
 
     let total = 0
 
+    // panier
     panier.forEach(produit => {
+
+        // ligne permettant d'afficher le produit dans le panier
         const ligne = document.createElement("p");
-        ligne.textContent = ${produit.quantite} ${produit.nom} ${produit.prix} €;
+        ligne.textContent = `${produit.quantite} ${produit.nom} ${produit.prix} €`;
+
+        // Création du bouton supprimer
+        const btnSupprimer = document.createElement("button")
+        btnSupprimer.textContent = "Supprimer"
+
+        // Ecoute du bouton supprimer
+        btnSupprimer.addEventListener("click", () => {
+            supprimerDuPanier(produit.id)
+        })
+
+        // Ajout au DOM
+        ligne.appendChild(btnSupprimer)
         listePanier.appendChild(ligne);
 
-        total += produit.prix;
+        // Prix total
+        total += produit.prix * produit.quantite;
+
     });
+
+    // Affichage du total du panier
     montantTotal.textContent = total;
 }
 
 
 // D. Validation Mail
 
-// Fonction pour écrire un mail valide grace au 
+// Fonction pour écrire un mail valide grace au regex
 function emailValide(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
@@ -132,28 +158,38 @@ const emailClient = document.getElementById("email-client");
 const messageFeedback = document.getElementById("message-feedback");
 
 btnCommander.addEventListener("click", () => {
+
+    // Réinitialisation du message
     messageFeedback.textContent = "";
     messageFeedback.style.color = "red";
 
+    // Message d'erreur du a un panier vide
     if (panier.length === 0) {
         messageFeedback.textContent = "❌ Votre panier est vide.";
         return;
     }
 
-    if (!emailValide(emailClient.value)) {
+    // Message d'erreur du a une adresse mail invalide
+    if (!emailValide.test(emailClient.value)) {
         messageFeedback.textContent = "❌ Email invalide.";
         return;
     }
 
+    // Message de validation de commande
     messageFeedback.style.color = "green";
     messageFeedback.textContent = "✅ Commande validée avec succès !";
 
+    // vider le panier apres la commande
     panier = [];
+
+    // Vide le champ mail apres la validation de la commande
     emailClient.value = "";
+
+    // Mise a jour de l'affichage panier
     afficherPanier();
 });
 
-
+// Afficher les produits
 afficherProduits(produits);
 
 
